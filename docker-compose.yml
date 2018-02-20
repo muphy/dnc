@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql1
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db-data:/var/lib/mysql
+      - ./db-scripts/init:/docker-entrypoint-initdb.d/:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=bar
+      - MYSQL_PASSWORD=baz

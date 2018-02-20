@@ -5,9 +5,12 @@ import UserService from "../services/UserService";
 import EntityNotFoundError from "../exceptions/EntityNotFoundError";
 import BadRequestEntity from "../exceptions/BadRequestEntity";
 import NotAuthenticateError from "../exceptions/NotAuthenticateError";
+import * as jwt from "jsonwebtoken";
 
 @Singleton
 export default class UserController {
+
+    static SECRET:string = "dnc";
 
     constructor(@Inject private userService: UserService) { }
 
@@ -24,8 +27,9 @@ export default class UserController {
         try {
             const email: string = ctx.request.body.email;
             const password: string = ctx.request.body.password;
-            const user: Promise<User> = this.userService.authenticateUser(email, password);
-            ctx.body = user;
+            const user: User = await this.userService.authenticateUser(email, password);
+            const token = jwt.sign(user,UserController.SECRET);
+            ctx.body = {token:token};
         } catch (e) {
             if (e instanceof NotAuthenticateError) {
                 ctx.throw(401, e.message);

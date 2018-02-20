@@ -5,6 +5,7 @@ export default class Route {
     private path: string;
     private method: string;
     private action: (ctx: IRouterContext) => void;
+    // private BASE_URL: string;
 
     constructor() {
         this.path = "";

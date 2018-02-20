@@ -12,8 +12,8 @@ export default class UserRoutes extends IRoutes {
 
     protected getRoutes(): Route[] {
         return [
-            Route.newRoute("/singup", "post", (ctx: IRouterContext) => this.userController.signup(ctx)),
-            Route.newRoute("/singin", "post", (ctx: IRouterContext) => this.userController.signin(ctx))
+            Route.newRoute("/api/public/singup", "post", (ctx: IRouterContext) => this.userController.signup(ctx)),
+            Route.newRoute("/api/public/singin", "post", (ctx: IRouterContext) => this.userController.signin(ctx))
         ];
     }
 }

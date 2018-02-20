@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { version } from "punycode";
 
 export enum DistpatchStatus {
     IS_WATING,
@@ -12,22 +13,22 @@ export class VehicleDispatch {
 
     //time for customer to request a vehicle
     @Column()
-    requestedAt: Date | null = null;
+    requestedAt: string;
 
     //a customer's id to request a vehicle
     @Column()
-    customerId: number = 0;
+    customerId: number;
 
     @Column()
-    address: string = "";
+    address: string;
 
     //a drivers's id to accept a customer's request
     @Column()
-    driverId: number = 0;
+    driverId: number;
 
     //time for driver to accept a customer's request
     @Column()
-    acceptedAt: Date | null = null;
+    acceptedAt: string | null;
 
     public get isWating(): boolean {
         const isNotAssignDirver = this.driverId == 0;
@@ -41,4 +42,11 @@ export class VehicleDispatch {
         return isAcceptedByDriver;
     }
 
+    public static newCustomerRequest(obj: { customerId: number, address: string }): VehicleDispatch {
+        const vehicleDispatch: VehicleDispatch = new VehicleDispatch();
+        vehicleDispatch.customerId = obj.customerId;
+        vehicleDispatch.address = obj.address;
+        vehicleDispatch.requestedAt = "";
+        return vehicleDispatch;
+    }
 }
