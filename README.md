@@ -40,6 +40,7 @@
 2. api 서버 디버그하기 `npm run start:debug`
 
 ## Web API 목록
+* 참고로 [postman 플러긴](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 사용시 docs/postman/dnc.postman_collection.json 화일을 import 하면 미리 저장된 api 목록들을 불러올 수 있다.
 ### 회원 관련
 1. 회원 가입 
 - url: [http://localhost:3000/api/public/signup]

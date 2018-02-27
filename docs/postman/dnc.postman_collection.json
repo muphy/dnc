@@ -1,0 +1,320 @@
+{
+	"id": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+	"name": "dnc",
+	"description": "",
+	"order": [
+		"1f15e380-48e5-81a5-184f-33e051016ed7",
+		"4fc15479-6506-5f37-c2f6-524edd95f82c",
+		"4497f8f6-a4a1-9171-ceb4-93baffe6fb10",
+		"206abe9d-fcf8-1498-619e-927bda834e81",
+		"0ddb5824-c477-d8e3-7590-8879780f67e9",
+		"d557ed30-3c30-b5bf-e9a1-92baf16238fb",
+		"681bd603-ece2-2df2-2b06-421ab4a55668",
+		"51e5f8d4-5acd-900d-0cb0-27ab36bfb181",
+		"25cd4455-c29a-4539-5fff-6e8767b8a809"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1519717201570,
+	"owner": "3810256",
+	"public": false,
+	"requests": [
+		{
+			"id": "0ddb5824-c477-d8e3-7590-8879780f67e9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/public/vehicledispatch",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/public/vehicledispatch",
+			"description": "요청한 목록을 모두 불러오는 요청",
+			"descriptionFormat": "html",
+			"time": 1519764748238,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"email\":\"client3@gmail.com\", \"password\": \"1234\",\"name\":\"john\",\"role\":\"CLIENT\"}"
+		},
+		{
+			"id": "1f15e380-48e5-81a5-184f-33e051016ed7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/public/signup",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/public/signup",
+			"description": "고객으로 회원가입을 요청",
+			"descriptionFormat": "html",
+			"time": 1519764356359,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"email\":\"test_client@gmail.com\", \"name\":\"test_client\",\"password\": \"1234\", \"role\":\"CLIENT\"}"
+		},
+		{
+			"id": "206abe9d-fcf8-1498-619e-927bda834e81",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6ImpvaG4iLCJlbWFpbCI6InRlc3RfY2xpZW50QGdtYWlsLmNvbSIsImlhdCI6MTUxOTc2Mjc0NX0.9Hiqw7smI9ZJ7NY915F5nJ6Mq8j8XtHfpmOWMHZokNU\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6ImpvaG4iLCJlbWFpbCI6InRlc3RfY2xpZW50QGdtYWlsLmNvbSIsImlhdCI6MTUxOTc2Mjc0NX0.9Hiqw7smI9ZJ7NY915F5nJ6Mq8j8XtHfpmOWMHZokNU",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/customer/vehicledispatch",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/customer/vehicledispatch",
+			"description": "로그인 요청 후 결과값으로 받은 jwt 토큰을 http header 에 Authorization 키 값으로 추가한 후 요청한다.",
+			"descriptionFormat": "html",
+			"time": 1519764689621,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"address\":\"서울특별시\"}"
+		},
+		{
+			"id": "25cd4455-c29a-4539-5fff-6e8767b8a809",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/public/vehicledispatch",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/public/vehicledispatch",
+			"description": "최종 요청한 목록을 요청한다.",
+			"descriptionFormat": "html",
+			"time": 1519765536684,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"email\":\"client3@gmail.com\", \"password\": \"1234\",\"name\":\"john\",\"role\":\"CLIENT\"}"
+		},
+		{
+			"id": "4497f8f6-a4a1-9171-ceb4-93baffe6fb10",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/public/singin",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/public/singin",
+			"description": "신규 가입한 회원으로 로그인 요청",
+			"descriptionFormat": "html",
+			"time": 1519764517412,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"emai\":\"test_client@gmail.com\", \"password\": \"1234\"}"
+		},
+		{
+			"id": "4fc15479-6506-5f37-c2f6-524edd95f82c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/public/signup",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/public/signup",
+			"description": "신규 택시 기사로 회원가입 요청",
+			"descriptionFormat": "html",
+			"time": 1519764463734,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"email\":\"test_client@gmail.com\", \"name\":\"john\",\"password\": \"1234\", \"role\":\"CLIENT\"}"
+		},
+		{
+			"id": "51e5f8d4-5acd-900d-0cb0-27ab36bfb181",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibmFtZSI6ImxpYW0iLCJlbWFpbCI6InRlc3RfZHJpdmVyQGdtYWlsLmNvbSIsImlhdCI6MTUxOTc2MzU2NH0.DOlvPHL54p1es_RPX-2xJqdOzNWEWYexyrGe8pp3u4I\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibmFtZSI6ImxpYW0iLCJlbWFpbCI6InRlc3RfZHJpdmVyQGdtYWlsLmNvbSIsImlhdCI6MTUxOTc2MzU2NH0.DOlvPHL54p1es_RPX-2xJqdOzNWEWYexyrGe8pp3u4I",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/driver/vehicledispatch",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/driver/vehicledispatch",
+			"description": "고객이 요청한 아이디로 요청을 승낙한다.",
+			"descriptionFormat": "html",
+			"time": 1519765477475,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"id\":\"13\"}"
+		},
+		{
+			"id": "681bd603-ece2-2df2-2b06-421ab4a55668",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibmFtZSI6ImxpYW0iLCJlbWFpbCI6InRlc3RfZHJpdmVyQGdtYWlsLmNvbSIsImlhdCI6MTUxOTc2MzU2NH0.DOlvPHL54p1es_RPX-2xJqdOzNWEWYexyrGe8pp3u4I\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibmFtZSI6ImxpYW0iLCJlbWFpbCI6InRlc3RfZHJpdmVyQGdtYWlsLmNvbSIsImlhdCI6MTUxOTc2MzU2NH0.DOlvPHL54p1es_RPX-2xJqdOzNWEWYexyrGe8pp3u4I",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/driver/vehicledispatch",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/driver/vehicledispatch",
+			"description": "Authorization header 에 jwt 값을 입력 한 후 요청한다.",
+			"descriptionFormat": "html",
+			"time": 1519764887822,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"id\":\"12\"}"
+		},
+		{
+			"id": "d557ed30-3c30-b5bf-e9a1-92baf16238fb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/public/signin",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "a8df4485-d9b4-8eac-94d7-cb91a697ab50",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/api/public/signin",
+			"description": "신규 가입한 택시 기사로 로그인 요청한다.\n요청 후 받은 jwt token 을 확인 후 다음 요청의 http header 의 Authorization 키값으로 보낸다.",
+			"descriptionFormat": "html",
+			"time": 1519764843078,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"email\":\"test_driver@gmail.com\", \"password\": \"1234\"}"
+		}
+	]
+}
