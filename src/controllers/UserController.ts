@@ -1,44 +1,52 @@
 import { IRouterContext } from "koa-router";
 import { Container, Inject, Singleton } from "typescript-ioc";
 import { User } from "../models/User";
-import UserService from "../services/UserService";
+import { UserRegistrationService, UserAuthenticationService } from "../services/UserService";
 import EntityNotFoundError from "../exceptions/EntityNotFoundError";
 import BadRequestEntity from "../exceptions/BadRequestEntity";
 import NotAuthenticateError from "../exceptions/NotAuthenticateError";
 import * as jwt from "jsonwebtoken";
+import { ICredential,IAuthToken } from "../services/IUserService";
 
 @Singleton
 export default class UserController {
 
-    static SECRET:string = "dnc";
-
-    constructor(@Inject private userService: UserService) { }
+    constructor(@Inject private userRegistrationService: UserRegistrationService,
+        @Inject private userAuthenticationService: UserAuthenticationService) { }
 
     public async signup(ctx: IRouterContext) {
         try {
             const user: User = User.newUser(ctx.request.body);
-            ctx.body = await this.userService.createUser(user);
+            ctx.status = 201;
+            ctx.body = await this.userRegistrationService.signup(user);
         } catch (e) {
-            ctx.throw(400, e.message);
+            if (e instanceof BadRequestEntity) {
+                ctx.status = 400;
+                ctx.body = e.message;
+            } else {
+                ctx.status = 500;
+                ctx.body = e.message;
+            }
         }
     }
 
     public async signin(ctx: IRouterContext) {
         try {
-            const email: string = ctx.request.body.email;
-            const password: string = ctx.request.body.password;
-            const user: User = await this.userService.authenticateUser(email, password);
-            const token = jwt.sign(user,UserController.SECRET);
-            ctx.body = {token:token};
+            // console.log("body",ctx.request.body);
+            const credencial = ctx.request.body as ICredential;
+            const token: IAuthToken = await this.userAuthenticationService.signin(credencial);
+            ctx.body = token;
         } catch (e) {
             if (e instanceof NotAuthenticateError) {
-                ctx.throw(401, e.message);
-            } else if (e instanceof BadRequestEntity) {
-                ctx.throw(400, e.message);
+                ctx.status = 401;
+                ctx.body = e.message;
+            } else if (e instanceof EntityNotFoundError) {
+                ctx.status = 404;
+                ctx.body = e.message;
             } else {
-                ctx.throw(500, e.message);
+                ctx.status = 500;
+                ctx.body = e.message;
             }
         }
     }
-
 }

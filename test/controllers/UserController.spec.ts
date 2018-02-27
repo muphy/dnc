@@ -7,7 +7,7 @@ import { anything, capture, instance, mock, verify, when } from "ts-mockito";
 import * as jwt from "jsonwebtoken";
 import UserController from "../../src/controllers/UserController";
 import UserService from "../../src/services/UserService";
-import { User } from "../../src/models/User";
+import { User,Role } from "../../src/models/User";
 import * as dotenv from "dotenv"
 
 dotenv.config();
@@ -20,7 +20,7 @@ describe("UserController", () => {
         name: "john",
         email: "john@dramancompany.com",
         password: "123456",
-        role: "customer"
+        role: Role.CUSTOMER
     });
 
     beforeEach(() => {
@@ -34,16 +34,11 @@ describe("UserController", () => {
             const requestBody = {
                 name: "john",
                 email:"john@dramancompany.com",
-                password:"123456",
-                role: "CUSTOMER"
+                password:"123456"
             };
             ctx.request.body = requestBody;
             when(userService.createUser(anything())).thenReturn(Promise.resolve(defaultUser));
             const user = await userController.signup(ctx);
-            // const [firstArg] = capture(userService.createUser).last();
-            // console.log("!!!");
-            // console.log(JSON.stringify(ctx.body));
-            // console.log(JSON.stringify(requestBody));
             expect(JSON.stringify(ctx.body)).to.equal(JSON.stringify(requestBody));
         });
     });

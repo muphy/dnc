@@ -29,7 +29,7 @@ export default class VehicleDispatchBuilder {
         this.vehicleDispatch.driverId = driverId;
         return this;
     }
-    public withAcceptedAt(acceptedAt: Date | null) {
+    public withAcceptedAt(acceptedAt: Date) {
         this.vehicleDispatch.acceptedAt = acceptedAt;
         return this;
     }
@@ -56,7 +56,7 @@ export default class VehicleDispatchBuilder {
                 result.push(VehicleDispatchBuilder.defaultVehicleDispatch().build());
             } else {
                 //status not accepted by driver => wating
-                result.push(VehicleDispatchBuilder.defaultVehicleDispatch().withDriverId(0).withAcceptedAt(null).build());
+                result.push(VehicleDispatchBuilder.defaultVehicleDispatch().withDriverId(0).withAcceptedAt(new Date()).build());
             }
         }
         return result;

@@ -9,8 +9,9 @@ import { Inject } from "typescript-ioc";
 
 import UserRoutes from "./routes/UserRoutes"
 import VehicleDispatchRoutes from "./routes/VehicleDispatchRoutes"
-import { User } from "./models/User";
+import { User, Client, Driver } from "./models/User";
 import { VehicleDispatch } from "./models/VehicleDispatch";
+import { ClassEntityChild, Column, OneToMany, DiscriminatorValue, SingleEntityChild } from "typeorm";
 
 export default class App {
 
@@ -30,7 +31,7 @@ export default class App {
                 database: "mydb",
             },
             entities: [
-                User, VehicleDispatch,
+                User, Client, Driver, VehicleDispatch
             ],
             logging: {
                 logQueries: true
@@ -42,16 +43,15 @@ export default class App {
         this.userRoutes.register(router);
         this.vehicleDispatchRoutes.register(router);
 
-        app.use(logger());
-        app.use(bodyParser());
-        app.use(router.routes());
-        app.use(router.allowedMethods());
-
         // Middleware below this line is only reached if JWT token is valid
         // unless the URL starts with '/public'
         //ctx.state.user
-        app.use(jwt({ secret: process.env.JWT_SECRETKEY}).unless({ path: [/^\/api\/public/,/^\/public/] }));
-        
+        app.use(logger());
+        app.use(bodyParser());
+        app.use(router.allowedMethods());
+        app.use(jwt({ secret: "dnc" }).unless({ path: [/^\/api\/public/, /^\/public/] }));
+        app.use(router.routes());
+
         return Promise.resolve(app);
     }
 

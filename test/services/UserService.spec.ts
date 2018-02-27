@@ -6,12 +6,13 @@ import { instance, mock, verify, when } from "ts-mockito";
 
 import UserService from "../../src/services/UserService";
 import UserRepository from "../../src/repositories/UserRepository";
+import AuthorityRepository from "../../src/repositories/AuthorityRepository";
 import UserBuilder from "../../src/models/builders/UserBuilder";
 
 describe("UserService", () => {
     let userService : UserService;
     let userRepository: UserRepository;
-
+    let authorityRepository: AuthorityRepository;
     const userId = 1234;
     const userEmail = "dev@dramancompany.com";
     const defaultCustomers = UserBuilder.getListOfDefaultUserByLength(5);
@@ -20,7 +21,8 @@ describe("UserService", () => {
 
     beforeEach( () => {
         userRepository = mock(UserRepository);
-        userService = new UserService(instance(userRepository));
+        authorityRepository = mock(AuthorityRepository);
+        userService = new UserService(instance(userRepository),instance(authorityRepository));
     });
 
     describe("findAll", () => {

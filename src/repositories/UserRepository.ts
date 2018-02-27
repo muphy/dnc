@@ -1,30 +1,38 @@
-import IRepository from "./IRepository";
-import { User } from "../../src/models/User";
+import { Singleton } from "typescript-ioc";
+import { getEntityManager, Repository } from "typeorm";
+
+import { User } from "../models/User";
+
 import EntityNotFoundError from "../exceptions/EntityNotFoundError";
+import BadRequestEntity from "../exceptions/BadRequestEntity";
+
+import { IUser } from "../services/IUserService";
+import IRepository from "./IRepository";
 
 export default class UserRepository extends IRepository {
 
-    public async getAllUsers(): Promise<User[]> {
-        return this.getUserRepository().find();
-    }
 
-    public async findUserById(id: number): Promise<User> {
-        const result = await this.getUserRepository().findOneById(id);
-        if (!result) {
-            throw new EntityNotFoundError(`id: ${id} not found`);
-        }
-        return result;
-    }
-
-    public async findUserByEmail(email: string | null ): Promise<User> {
+    public async findUserByEmail(email: string ): Promise<IUser> {
         const result = await this.getUserRepository().findOne({ email: email });
-        if (!result) {
-            throw new EntityNotFoundError(`email: ${email} not found`);
+        if (result) {
+            return result;
+        } else {
+            throw new EntityNotFoundError();
         }
-        return result;
     }
 
-    public async createUser(user: User): Promise<User> {
-        return this.getUserRepository().persist(user);
+    public async createUser(user: IUser): Promise<IUser> {
+        let newUser = user as User;
+        await this.getUserRepository().persist(newUser);
+        return newUser;
     }
+    // public async findUserById(id: number): Promise<IUser> {
+    //     const result = await this.findOneById(id, {alias:"user", leftJoinAndSelect: {
+    //         authorities: "user.authorities"
+    //     } });
+    //     if (!result) {
+    //         throw new EntityNotFoundError(`id: ${id} not found`);
+    //     }
+    //     return result;
+    // }
 }

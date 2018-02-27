@@ -13,6 +13,8 @@ export default class VehicleDispatchRoutes extends IRoutes {
     protected getRoutes(): Route[] {
         return [
             Route.newRoute("/api/public/vehicledispatch", "get", (ctx: IRouterContext) => this.vehicleDispatchController.getAllVehicleDispatch(ctx)),
+            Route.newRoute("/api/customer/vehicledispatch", "post", (ctx: IRouterContext) => this.vehicleDispatchController.request(ctx)),
+            Route.newRoute("/api/driver/vehicledispatch", "post", (ctx: IRouterContext) => this.vehicleDispatchController.accept(ctx))
         ];
     }
 }

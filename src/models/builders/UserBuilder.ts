@@ -1,4 +1,5 @@
-import { User, Role } from '../User';
+import { User} from '../User';
+import { Role } from "../../services/IUserService"
 
 export default class UserBuilder {
 
@@ -42,16 +43,6 @@ export default class UserBuilder {
         return this;
     }
 
-    public withCustomerRole() {
-        this.user.role = Role.CUSTOMER;
-        return this;
-    }
-
-    public withDriverRole() {
-        this.user.role = Role.DRIVER;
-        return this;
-    }
-
     public build() {
         return this.user;
     }
@@ -61,7 +52,7 @@ export default class UserBuilder {
         .withRandomId()
         .withEmail("123@dramancompany")
         .withPassword("1234")
-        .withCustomerRole()
+        .withRole(Role.CLIENT);
     }
 
     public static defaultDriverUser() {
@@ -69,7 +60,7 @@ export default class UserBuilder {
         .withRandomId()
         .withEmail("123@dramancompany")
         .withPassword("1234")
-        .withDriverRole();
+        .withRole(Role.DRIVER);
     }
 
     public static getListOfDefaultUserByLength(length: number) {

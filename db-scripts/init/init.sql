@@ -4,27 +4,37 @@ GRANT ALL PRIVILEGES ON mydb.* TO 'test'@'localhost' IDENTIFIED BY 'test'; */
 USE mydb;
 
 CREATE TABLE user (
-	id int auto_increment not null primary key,
-    name varchar(100) not null,
-    email varchar(100) not null,
-    password VARCHAR(100) not null,
-    role varchar(10) not null
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  email varchar(100) NOT NULL,
+  password varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE client (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  PRIMARY KEY (id),
+  KEY Idx_client_userId (user_id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE driver (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  PRIMARY KEY (id),
+  KEY Idx_driver_userId (user_id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 CREATE TABLE vehicle_dispatch (
-	id int auto_increment not null primary key,
-    customerId int not null,
-    address varchar(250) not null,
-    requestedAt date not null,
-    driverId int,
-    acceptedAt date
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  id int(11) NOT NULL AUTO_INCREMENT,
+  address varchar(250) NOT NULL,
+  requested_at date NOT NULL,
+  driver_id int(11) DEFAULT NULL,
+  accepted_at date DEFAULT NULL,
+  customer_id int(11) NOT NULL,
+  PRIMARY KEY (id),
+  KEY idx_vehicle_dispatches_driver_id (driver_id),
+  KEY idx_vehicle_dispatches_customer_id (customer_id)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
-INSERT INTO user (name, email, password, role) values ('customer_tester1', 'tester1@gmail.com', "1234","CUSTOMER");
-INSERT INTO user (name, email, password, role) values ('customer_tester2', 'tester2@gmail.com', "1234","CUSTOMER");
-INSERT INTO user (name, email, password, role) values ('driver_tester1', 'tester2@gmail.com', "1234","DRIVER");
-INSERT INTO user (name, email, password, role) values ('driver_tester2', 'tester2@gmail.com', "1234","DRIVER");
 
-INSERT INTO vehicle_dispatch(customerId, address, requestedAt) values (1, "pangyo 35", now());
-INSERT INTO vehicle_dispatch(customerId, address, requestedAt) values (1, "pangyo 10", now());
-INSERT INTO vehicle_dispatch(customerId, address, requestedAt) values (3, "pangyo 40", now());

@@ -12,7 +12,10 @@
     "test:debug": "node_modules/mocha/bin/mocha --inspect --debug-brk --not-timeouts --compilers ts:ts-node/register test/**/*.spec.ts",
     "pree2e": "ts-node scripts/start-test-db.ts",
     "e2e": "ts-node scripts/run-e2e.ts",
-    "poste2e": "ts-node scripts/stop-test-db.ts"
+    "poste2e": "ts-node scripts/stop-test-db.ts",
+    "seed": "ts-node seeds/Main.seed.ts",
+    "gen": "ts-node seeds/Gen.seed.ts",
+    "seed:debug": "ts-node --inspect=5858 --debug-brk --ignore false seeds/Main.seed.ts"
   },
   "repository": {
     "type": "git",

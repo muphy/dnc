@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "node",
             "request": "launch",
@@ -37,6 +38,23 @@
             "protocol": "inspector",
             "sourceMaps": true,
             "port": 9229
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Seed",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [
+                "run-script",
+                "seed:debug"
+            ],
+            "outFiles": [],
+            "protocol": "inspector",
+            "sourceMaps": true,
+            "port": 5858
+        },
     ]
 }
